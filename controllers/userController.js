@@ -6,9 +6,9 @@ module.exports = {
         res.send("List users! GET");
     },
 
-    //list all Users
+    //list user
     get_user : async function(req, res, next) {
-        res.send("get user! GET" +  req.params.user_id);
+        res.send("get user! GET " +  req.params.user_id);
     },
 
     //create new user
@@ -18,6 +18,11 @@ module.exports = {
 
     //update user info
     update_user : async function(req, res, next) {
-        res.send('Update User! PUT');
+        res.send('Update User! PUT ' +  req.params.user_id);
+    },
+
+    //delete user
+    delete_user : async function(req, res, next) {
+        res.send('Delete User! DELETE ' +  req.params.user_id);
     }
 };
