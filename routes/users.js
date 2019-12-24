@@ -7,8 +7,9 @@ const userC = require('../controllers/userController');
 router
     .get('/', userC.list_users)
     .post('/', userC.create_user)
-    .get('/:user_id', userC.get_user)
-    .put('/:user_id', userC.update_user)
-    .delete('/:user_id', userC.delete_user);
+    .post('/login', userC.login_user)
+    .get('/:username', userC.get_user)
+    .put('/:username', userC.update_user)
+    .delete('/:username', userC.delete_user);
 
 module.exports = router;
