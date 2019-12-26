@@ -9,9 +9,9 @@ const userSchema = new Schema({
     username:   { type: String, lowercase: true, unique: true, required: [true, "can't be blank"], match: [/^[a-zA-Z0-9]+$/, 'is invalid'], index: true },
     password:   { type: String, required: [true, "can't be blank"], select: false },
     fullname:   { type: String, required: [true, "can't be blank"] , match: [/^[a-zA-Z0-9 ]+$/, 'is invalid'] },
-    birthday:   { type: Date, default: Date.now() },
+    birthday:   { type: Date, required: [true, "can't be blank"], default: Date.now() },
     admin:      { type: Boolean, default: false, select: false },
-    bio:        { type: String, default: "Nothing to see here..." },
+    bio:        { type: String, required: [true, "can't be blank"], default: "Nothing to see here..." },
     telephone:  { type: String, required: [true, "can't be blank"], unique: true },
     email:      { type: String, lowercase: true, unique: true, required: [true, "can't be blank"], match: [/\S+@\S+\.\S+/, 'is invalid'] }
 }, { versionKey: false });

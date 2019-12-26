@@ -1,9 +1,9 @@
 const User = require('../models/user');
 
 module.exports = {
-    //list all Users
+    //list Users
     list_users : async function(req, res, next) {
-        let users = await User.find(function(err, users) {
+        let users = await User.find(req.query, function(err, users) {
             if (err) {
                 res.send(err);
                 console.log(err);
@@ -47,7 +47,6 @@ module.exports = {
     //create new user
     create_user : async function(req, res, next) {
         let newUser;
-        console.log(req.body);
 
         try{
             // user model
@@ -61,7 +60,6 @@ module.exports = {
                 email: req.body.email
             });
         }catch (e) {
-            console.log(e);
             res.send(e);
         }
 
@@ -75,32 +73,20 @@ module.exports = {
 
     //update user info
     update_user : async function(req, res, next) {
-        let u = await User.findOne({username: req.params.username}, function (err, usr){
-            if (err)
-                res.send(err);
-            else
-                return usr;
-        });
-
         User.findOneAndUpdate(
             {username: req.params.username},
-            {
-                username: req.body.username || u.username,
-                password: req.body.password || u.password,
-                fullname: req.body.fullname || u.fullname,
-                birthday: req.body.birthday || u.birthday,
-                bio: req.body.bio || u.bio,
-                telephone: req.body.telephone || u.telephone,
-                email: req.body.email || u.email
-            } , function(err, usr) {
+            req.body,
+            function(err, usr) {
 
-            if (err)
-                res.send(err);
-            else
-                res.send('User Updated');
+                if (err)
+                    res.send(err);
+                else if (usr === null)
+                    res.send('User doesn\'t exist');
+                else
+                    res.send('User Updated');
 
-            console.log('User Updated');
-        });
+                console.log('User Updated');
+            });
     },
 
     //delete user
