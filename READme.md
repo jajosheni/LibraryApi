@@ -1,8 +1,6 @@
 # library API
 
 ### Documentation
-<a href="https://documenter.getpostman.com/view/7159620/SWLZfVb1?version=latest#a22d2a40-ae0d-437f-894a-dd37ba5f7ce6">Postman Docs</a>
-
-Change localhost to IP
+<a href="https://documenter.getpostman.com/view/7159620/SWLZfVb1?version=latest">Postman Docs</a>
 
 ` Current ip : 207.154.200.22 `
