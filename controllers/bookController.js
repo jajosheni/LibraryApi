@@ -71,7 +71,7 @@ module.exports = {
 
     //delete book
     delete_book : async function(req, res, next) {
-        Book.findOneAndDelete( req.params.book_id, function (err){
+        Book.findByIdAndDelete( req.params.book_id, function (err){
             if (err)
                 res.send(err);
             else
