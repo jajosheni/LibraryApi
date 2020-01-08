@@ -41,7 +41,10 @@ module.exports = {
                 return usr;
         });
 
-        res.send(user);
+        if(user===null)
+            res.send('incorrect');
+        else
+            res.send(user);
     },
 
     //create new user
