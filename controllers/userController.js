@@ -86,7 +86,7 @@ module.exports = {
                 else if (usr === null)
                     res.send('User doesn\'t exist');
                 else
-                    res.send('User Updated');
+                    res.send(usr);
 
                 console.log('User Updated');
             });
